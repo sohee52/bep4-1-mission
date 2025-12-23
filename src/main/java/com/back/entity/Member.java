@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor // 기본 생성자 자동 생성
+@NoArgsConstructor // 인자가 없는 기본 생성자 자동 생성
 public class Member extends BaseIdAndTime {
 
     @Column(unique = true)

@@ -5,6 +5,8 @@ import com.back.exception.DomainException;
 import com.back.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -23,5 +25,9 @@ public class MemberService {
         });
 
         return memberRepository.save(new Member(username, password, nickname)); // save는 JPARepository에서 제공하는 기본 메서드로, 엔티티를 저장합니다.
+    }
+
+    public Optional<Member> findByUsername(String username) {
+        return memberRepository.findByUsername(username);
     }
 }
