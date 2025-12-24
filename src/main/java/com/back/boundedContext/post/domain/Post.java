@@ -21,7 +21,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @Getter
 public class Post extends BaseIdAndTime {
     @ManyToOne(fetch = LAZY) // Lazy 로딩 = 필요할 때 데이터를 가져오는 방식
-    private Member author;
+    private PostMember author;
 
     private String title;
 
@@ -31,13 +31,13 @@ public class Post extends BaseIdAndTime {
     @OneToMany(mappedBy = "post", cascade = {PERSIST, REMOVE}, orphanRemoval = true)
     private List<PostComment> comments = new ArrayList<>();
 
-    public Post(Member author, String title, String content) {
+    public Post(PostMember author, String title, String content) {
         this.author = author;
         this.title = title;
         this.content = content;
     }
 
-    public PostComment addComment(Member author, String content) {
+    public PostComment addComment(PostMember author, String content) {
         PostComment postComment = new PostComment(this, author, content);
 
         comments.add(postComment);
