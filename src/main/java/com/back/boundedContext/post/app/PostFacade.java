@@ -37,15 +37,13 @@ public class PostFacade {
 
     public PostMember syncMember(MemberDto member) {
         PostMember postMember = new PostMember(
+                member.getId(),
+                member.getCreateDate(),
+                member.getModifyDate(),
                 member.getUsername(),
                 "",
                 member.getNickname()
         );
-
-        // 원본 Member의 id, createDate, modifyDate 그대로 복사해서 PostMember에 설정
-        postMember.setId(member.getId());
-        postMember.setCreateDate(member.getCreateDate());
-        postMember.setModifyDate(member.getModifyDate());
 
         return postMemberRepository.save(postMember);
     }
