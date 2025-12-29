@@ -1,8 +1,6 @@
 package com.back.boundedContext.member.app;
 
 import com.back.boundedContext.member.domain.Member;
-import com.back.boundedContext.member.domain.MemberPolicy;
-import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.rsData.RsData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +18,11 @@ public class MemberFacade {
     @Transactional
     public RsData<Member> join(String username, String password, String nickname) {
         return memberJoinUseCase.join(username, password, nickname);
+    }
+
+    @Transactional(readOnly = true)
+    public long count() {
+        return memberSupport.count();
     }
 
     @Transactional(readOnly = true)

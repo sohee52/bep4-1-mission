@@ -35,6 +35,7 @@ public class Wallet extends BaseManualIdAndTime {
         return balance > 0;
     }
 
+    // credit 메서드 : 충전
     // 기본 메서드
     public void credit(long amount, CashLog.EventType eventType, String relTypeCode, int relId) {
         balance += amount;
@@ -52,6 +53,7 @@ public class Wallet extends BaseManualIdAndTime {
         credit(amount, eventType, holder);
     }
 
+    // debit 메서드 : 출금
     // 기본 메서드
     public void debit(long amount, CashLog.EventType eventType, String relTypeCode, int relId) {
         balance -= amount;

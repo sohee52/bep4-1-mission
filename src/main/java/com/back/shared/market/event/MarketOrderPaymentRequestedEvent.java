@@ -8,5 +8,5 @@ import lombok.Getter;
 @Getter
 public class MarketOrderPaymentRequestedEvent {
     private OrderDto order;
-    private long pgPaymentAmount;
+    private long pgPaymentAmount; // 결제 요청 금액
 }
