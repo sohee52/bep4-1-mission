@@ -14,4 +14,6 @@ public class GlobalConfig {
     public void setEventPublisher(EventPublisher eventPublisher) {
         GlobalConfig.eventPublisher = eventPublisher; // 한 번만 선언되도록 설정
     }
+
+    public static String INTERNAL_CALL_BACK_URL;
 }
