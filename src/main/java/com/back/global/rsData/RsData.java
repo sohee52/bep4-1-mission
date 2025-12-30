@@ -1,11 +1,12 @@
 package com.back.global.rsData;
 
+import com.back.standard.resultType.ResultType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class RsData<T> {
+public class RsData<T> implements ResultType {
     private final String resultCode;
     private final String msg;
     private final T data; // Post, Member 등 다양한 타입이 올 수 있으므로 제네릭으로 처리
