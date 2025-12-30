@@ -12,15 +12,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor // final 이 붙은 필드에 대해 생성자를 자동으로 생성
+@RequiredArgsConstructor
 public class PostFacade {
     private final PostSupport postSupport;
     private final PostSyncMemberUseCase postSyncMemberUseCase;
     private final PostWriteUseCase postWriteUseCase;
 
-    @Transactional(readOnly = true)
-    public long count() {
-        return postSupport.count();
+    @Transactional
+    public PostMember syncMember(MemberDto member) {
+        return postSyncMemberUseCase.syncMember(member);
     }
 
     @Transactional
@@ -29,18 +29,18 @@ public class PostFacade {
     }
 
     @Transactional(readOnly = true)
+    public long count() {
+        return postSupport.count();
+    }
+
+    @Transactional(readOnly = true)
     public Optional<Post> findById(int id) {
         return postSupport.findById(id);
     }
 
-    @Transactional
-    public PostMember syncMember(MemberDto member) {
-        return postSyncMemberUseCase.syncMember(member);
-    }
-
     @Transactional(readOnly = true)
-    public Optional<PostMember> findPostMemberByUsername(String username) {
-        return postSupport.findPostMemberByUsername(username);
+    public Optional<PostMember> findMemberByUsername(String username) {
+        return postSupport.findMemberByUsername(username);
     }
 
     @Transactional(readOnly = true)

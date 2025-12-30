@@ -20,6 +20,10 @@ public class MemberFacade {
         return memberJoinUseCase.join(username, password, nickname);
     }
 
+    public String getRandomSecureTip() {
+        return memberGetRandomSecureTipUseCase.getRandomSecureTip();
+    }
+
     @Transactional(readOnly = true)
     public long count() {
         return memberSupport.count();
@@ -33,9 +37,5 @@ public class MemberFacade {
     @Transactional(readOnly = true)
     public Optional<Member> findById(int id) {
         return memberSupport.findById(id);
-    }
-
-    public String getRandomSecureTip() {
-        return memberGetRandomSecureTipUseCase.getRandomSecureTip();
     }
 }
